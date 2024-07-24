@@ -11,7 +11,7 @@ import HomePage from './components/HomePage';
   },
   {
     path:"/register",
-    element:< Signup/>
+    element:<Signup/>
   },
   {
     path:"/login",
@@ -21,7 +21,7 @@ import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="flex items-center h-screen p-4">
         <RouterProvider router={router}/>
     </div>
   );

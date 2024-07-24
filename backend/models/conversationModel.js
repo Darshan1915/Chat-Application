@@ -11,4 +11,5 @@ const coversationModel = mongoose.Schema({
      }]
 },{timestamps:true})
 
+
 export const Coversation = mongoose.model("Coversation",coversationModel); 
