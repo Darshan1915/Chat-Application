@@ -8,14 +8,20 @@ function Signup() {
     username:"",
     password:"",
     confirmPassword:"",
-    gender:"",
+    // gender:"",
   })
-  const handleCheckBox = (gender)=>{
-    setuser(...user, gender )
-  }
+  // const handleCheckBox = (gender)=>{
+  //   setuser(...user, gender )
+  // }
   const onSumbitHandeler = (e) => {
     e.preventDefault();
     console.log(user);
+    setuser({
+      fullname:"",
+    username:"",
+    password:"",
+    confirmPassword:"",
+    })
   }
   return (
     <div className='mx-auto min-w-96'>
@@ -54,7 +60,7 @@ function Signup() {
             </label>
             <input value={user.confirmPassword} onChange={(e)=>setuser({...user,confirmPassword:e.target.value})} className='w-full h-10 rounded-lg input-bordered' type='password' placeholder=' Confirm Password'/>
           </div>
-          <div className='flex my-4'>
+          {/* <div className='flex my-4'>
             <div className='flex '>
             <p>Male : </p>
             <input checked={user.gender==="male"} onChange={()=>handleCheckBox("male")}   type="checkbox" defaultChecked className="checkbox" />
@@ -63,7 +69,7 @@ function Signup() {
            <p> Female : </p>
            <input checked={user.gender==="female"} onChange={()=>handleCheckBox("female")}   type="checkbox" defaultChecked className="checkbox" />
            </div>
-          </div >
+          </div > */}
             <p className='text-center'>Already have an account ? 
             <Link to='/login' className='text-blue-200'> Login</Link>
             </p>
