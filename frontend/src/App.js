@@ -30,4 +30,4 @@ function App() {
 export default App;
 
 
-//video time : 02:11
+//video time : 02:50

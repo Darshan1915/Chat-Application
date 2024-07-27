@@ -1,16 +1,16 @@
-import { Message } from "../models/messageModel";
 import bcrypt from 'bcrypt';
+import {User} from "../models/userModel.js"
 
-const register = async(req,res)=>{
+export const register = async(req,res)=>{
     try{
         let {fullname, username, password, confirmPassword, gender} = req.body;
         if(!fullname || !username || !password || !confirmPassword || !gender){
-            return res.status(400).json({message:"All fielda are required"})
+            return res.status(400).json({message:"All fields are required"})
         }
         if(password === confirmPassword){
             return res.status(400).json({message:"Password do not match"})
         }
-
+        
         const user = await User.findOne({username});
         if(user){
             return res.status(400).json({message:"User already exit please try again"})
@@ -19,7 +19,7 @@ const register = async(req,res)=>{
         bcrypt.genSalt(10, (err, salt)=>{
             bcrypt.hash(password, salt,async (err, hash)=>{
                 console.log(hash);
-                await User.create({
+                let User = await userModel.create({
                     fullname,
                     username,
                     password : hash,
@@ -28,15 +28,11 @@ const register = async(req,res)=>{
                 })
             })
         })
-        // await User.create({
-        //     fullname,
-        //     username,
-        //     password,
-        //     profilephoto,
-        //     gender
-        // })
+
     }
     catch(error){
         console.log(error);
     }
 }
+
+// export {register};

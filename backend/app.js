@@ -1,26 +1,22 @@
-// const express = require('express');
-import express from "express";//For that we need to add : "type":"module" in package.json file.
-import connectDB from "./config/database.js"; //When you use import then use extension at last i.e. .js
-// import userRoute from './Routes/userRoute.js';
+import express from "express"; 
+import connectDB from "./config/database.js";
+import userRout from "./Routes/userRoute.js" 
 
-// const dotenv = require('dotenv');
-// import dotenv from 'dotenv'
-// dotenv.config({});
+import dotenv from 'dotenv'
+ dotenv.config({});
 
 const app = express();
 
 //Routes
-app.use("/api/v1/user",userRoute)
+app.use("/api/v1/user",userRout);
  
-
- 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ||  6000;
 app.listen(PORT,()=>{
-    // connectDB();
+    connectDB();
     console.log(`Server listen at port ${PORT}`);
 })
 
 
 
 
-//video time : 40:00
+ 

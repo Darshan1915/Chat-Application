@@ -15,12 +15,12 @@ function Signup() {
   // }
   const onSumbitHandeler = (e) => {
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
     setuser({
       fullname:"",
-    username:"",
-    password:"",
-    confirmPassword:"",
+      username:"",
+      password:"",
+      confirmPassword:"",
     })
   }
   return (
