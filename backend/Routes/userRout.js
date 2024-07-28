@@ -1,8 +1,5 @@
 import express from 'express';
-// import {register} from "../controllers/userController" 
-
-const Router = express.Router();
  
-Router.route("/register")
+const Router = express.Router();
   
 export default Router;
