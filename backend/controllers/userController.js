@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import {User} from "../models/userModel.js"
 
-export const register = async(req,res)=>{
+const register = async(req,res)=>{
     try{
         let {fullname, username, password, confirmPassword, gender} = req.body;
         if(!fullname || !username || !password || !confirmPassword || !gender){
@@ -35,4 +35,4 @@ export const register = async(req,res)=>{
     }
 }
 
-// export {register};
+export {register};
