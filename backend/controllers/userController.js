@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import {User} from "../models/userModel.js"
 
-const register = async(req,res)=>{
+export const register = async(req,res)=>{
     try{
         let {fullname, username, password, confirmPassword, gender} = req.body;
         if(!fullname || !username || !password || !confirmPassword || !gender){
@@ -19,12 +19,12 @@ const register = async(req,res)=>{
         bcrypt.genSalt(10, (err, salt)=>{
             bcrypt.hash(password, salt,async (err, hash)=>{
                 console.log(hash);
-                let User = await userModel.create({
+                let user = await User.create({
                     fullname,
                     username,
                     password : hash,
                     profilephoto:profilePhotoo,
-                    gender
+                     
                 })
             })
         })
@@ -35,4 +35,7 @@ const register = async(req,res)=>{
     }
 }
 
-export {register};
+// export {register};
+// export default register;
+
+ 
