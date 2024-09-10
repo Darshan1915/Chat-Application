@@ -50,7 +50,6 @@ import { User } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-
 export const register = async (req, res) => {
     try {
         const { fullName, username, password, confirmPassword, gender } = req.body;
@@ -137,7 +136,7 @@ export const logout = (req, res) => {
 //Other users:
 export const getOtherUsers = async (req, res) => {
     try {
-        const loggedInUserId = req.id;
+        const loggedInUserId = req.id;//This is id which we inserted at the time of isAuthenticated checking
         const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");//$ne is sign of NotEqual i.e. loggedin user ki chhod kr saare user ki id AND "-password" is indicate that we don't need passwordd.
         return res.status(200).json(otherUsers);
     } catch (error) {

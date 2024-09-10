@@ -1,11 +1,12 @@
 import {Conversation} from "../models/conversationModel.js"
-import { Message } from "../models/messageModel.js";
-import { getReceiverSocketId, io } from "../socket/socket.js";
+import { Message } from "../models/messageModel.js"
+// import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req,res) => {
     try {
         const senderId = req.id;
         const receiverId = req.params.id;
+
         const {message} = req.body;
 
         let gotConversation = await Conversation.findOne({
@@ -28,15 +29,17 @@ export const sendMessage = async (req,res) => {
         
 
         await Promise.all([gotConversation.save(), newMessage.save()]);
+
+        return res.json({message:"Message snet successfully...!!"})
          
-        // SOCKET IO
-        const receiverSocketId = getReceiverSocketId(receiverId);
-        if(receiverSocketId){
-            io.to(receiverSocketId).emit("newMessage", newMessage);
-        }
-        return res.status(201).json({
-            newMessage
-        })
+//         // SOCKET IO
+//         const receiverSocketId = getReceiverSocketId(receiverId);
+//         if(receiverSocketId){
+//             io.to(receiverSocketId).emit("newMessage", newMessage);
+//         }
+//         return res.status(201).json({
+//             newMessage
+//         })
     } catch (error) {
         console.log(error);
     }
@@ -53,3 +56,4 @@ export const getMessage = async (req,res) => {
         console.log(error);
     }
 }
+
